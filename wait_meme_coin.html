@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$WAIT - Meme Coin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial Black', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        .bg-gif {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+            mix-blend-mode: overlay;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .title {
+            font-size: clamp(4rem, 15vw, 12rem);
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 
+                0 0 20px rgba(255, 255, 255, 0.8),
+                0 0 40px rgba(255, 0, 255, 0.6),
+                0 0 60px rgba(0, 255, 255, 0.6),
+                5px 5px 0 rgba(0, 0, 0, 0.3);
+            margin-bottom: 60px;
+            animation: pulse 2s ease-in-out infinite, glitch 3s infinite;
+            letter-spacing: 0.1em;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes glitch {
+            0%, 90%, 100% { transform: translate(0); }
+            92% { transform: translate(-2px, 2px); }
+            94% { transform: translate(2px, -2px); }
+            96% { transform: translate(-2px, -2px); }
+        }
+
+        .cta-button {
+            padding: 25px 60px;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 900;
+            color: #000;
+            background: linear-gradient(135deg, #ffff00, #00ff00);
+            border: 5px solid #fff;
+            border-radius: 50px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: 
+                0 0 30px rgba(255, 255, 0, 0.8),
+                0 10px 30px rgba(0, 0, 0, 0.5),
+                inset 0 -5px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            animation: buttonFloat 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes buttonFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            50%, 100% { left: 100%; }
+        }
+
+        .cta-button:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 
+                0 0 50px rgba(255, 255, 0, 1),
+                0 15px 40px rgba(0, 0, 0, 0.6),
+                inset 0 -5px 20px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, #00ff00, #ffff00);
+        }
+
+        .cta-button:active {
+            transform: scale(1.05) translateY(-2px);
+        }
+
+        .floating-text {
+            position: absolute;
+            font-size: 2rem;
+            font-weight: 900;
+            opacity: 0.2;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            animation: float 20s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(100px, -100px) rotate(5deg); }
+            50% { transform: translate(-50px, -200px) rotate(-5deg); }
+            75% { transform: translate(-100px, -100px) rotate(3deg); }
+        }
+
+        .floating-text:nth-child(2) { top: 20%; left: 10%; animation-delay: -5s; }
+        .floating-text:nth-child(3) { top: 60%; right: 10%; animation-delay: -10s; }
+        .floating-text:nth-child(4) { bottom: 20%; left: 15%; animation-delay: -15s; }
+        .floating-text:nth-child(5) { top: 40%; left: 5%; animation-delay: -3s; }
+        .floating-text:nth-child(6) { top: 15%; right: 20%; animation-delay: -8s; }
+        .floating-text:nth-child(7) { bottom: 30%; right: 5%; animation-delay: -12s; }
+        .floating-text:nth-child(8) { top: 70%; left: 20%; animation-delay: -18s; }
+        .floating-text:nth-child(9) { top: 35%; right: 15%; animation-delay: -7s; }
+        .floating-text:nth-child(10) { bottom: 15%; left: 40%; animation-delay: -13s; }
+    </style>
+</head>
+<body>
+    <div class="bg-container">
+        <img class="bg-gif" src="https://media.giphy.com/media/d0DdMCREQChi3jGymW/giphy.gif" alt="background">
+    </div>
+    
+    <div class="floating-text">🚀</div>
+    <div class="floating-text">💎</div>
+    <div class="floating-text">🌙</div>
+    <div class="floating-text">🐸</div>
+    <div class="floating-text">💰</div>
+    <div class="floating-text">🔥</div>
+    <div class="floating-text">📈</div>
+    <div class="floating-text">🐸</div>
+    <div class="floating-text">⏰</div>
+
+    <div class="content">
+        <h1 class="title">$WAIT OR NOT</h1>
+        <button class="cta-button" onclick="alert('To the moon! 🚀')">Trade $WAIT Today</button>
+    </div>
+</body>
+</html>
